@@ -7,10 +7,7 @@ CREATE TABLE foods (
     food_id SERIAL PRIMARY KEY,
     food_name VARCHAR(255) NOT NULL,
 	expiry TIMESTAMP NOT NULL,
-	nutrition_info JSONB,
-	point_val INT,
-    quantity INT DEFAULT 0,
-    
+    quantity INT DEFAULT 0
 );
 
 CREATE TABLE points (
