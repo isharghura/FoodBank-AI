@@ -1,7 +1,7 @@
 -- DROP TABLE users
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-	name varchar(255) not null
+	username varchar(255) not null
 );
 
 -- DROP TABLE foods
@@ -20,14 +20,14 @@ CREATE TABLE points (
     points_awarded INT NOT NULL
 );
 
-INSERT INTO users (name) VALUES
+INSERT INTO users (username) VALUES
 ('John Doe'),
 ('Jane Doe');
 
 INSERT INTO foods (food_name, expiry) VALUES
 ('Canned Beans', '2024-12-29'),
 ('Rice', '2025-06-30'),
-('Canned Tuna', '2024-11-31');
+('Canned Tuna', '2024-11-29');
 
 INSERT INTO points (user_id, food_id, time_submitted, points_awarded) VALUES
 (1, 1, '2024-09-28 14:30:00', 10);
