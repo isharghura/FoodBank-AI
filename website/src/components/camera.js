@@ -55,16 +55,21 @@ const WebCam = () => {
 
     return(
         <div>
-      <h1>Webcam Capture</h1>
-      <video ref={videoRef} autoPlay width="600" height="400" />
+      <h1>LeaderBoard #</h1>
       <div>
-        <button onClick={takePhoto}>Take Photo</button>
+
+      </div>
+      <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen"/>
+      <div>
+        <button className="take-photo-button" onClick={takePhoto}>
+          Take Photo
+        </button>
       </div>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {photo && (
         <div>
           <h2>Captured Photo:</h2>
-          <img src={photo} alt="Captured" />
+          <img src={photo} alt="Captured" className="taken_picture"/>
         </div>
       )}
     </div>
@@ -72,37 +77,5 @@ const WebCam = () => {
 };
     
 
-
-    // useEffect(() =>{
-    //     const getVideo = async() => {
-    //         try {
-    //             const stream = await navigator.mediaDevices.getUserMedia({video: true });
-    //             if (videoRef.current) {
-    //                 videoRef.current.srcObject = stream;
-    //               }
-    //             } catch (err) {
-    //               console.error("Error accessing webcam: ", err);
-    //             }
-    //         };
-            
-    //         getVideo();
-
-    //         // Cleanup function to stop the video stream when the component is unmounted
-    //         return () => {
-    //             if (videoRef.current && videoRef.current.srcObject) {
-    //                 const stream = videoRef.current.srcObject;
-    //                 const tracks = stream.getTracks();
-
-    //                 tracks.forEach(track => track.stop());
-    //             }
-    //             };
-    //         }, []);
-
-    //         return(
-    //             <div>
-    //                 <video ref={videoRef} width={600} height={400} autoPlay />
-    //             </div>
-    //         );
-    //     };
     
 export default WebCam;
