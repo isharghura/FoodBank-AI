@@ -5,9 +5,44 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #709176;
 }
+.take-photo-button {
+  width: 80px;      /* Adjust to control the oval width */
+  height: 40px;     /* Adjust to control the oval height */
+  background-color: #79745C; /* Choose a background color */
+  border: none;
+  border-radius: 50px;  /* Creates the oval shape */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.take-photo-button:hover {
+  background-color: #79745C;  /* Hover effect */
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.camera-screen {
+  width: 600px;
+  height: 400px;
+  border-radius: 20px; /* Rounded corners */
+  border: 5px solid #704E2E;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Smooth shadow for a nice effect */
+  object-fit: cover; /* Ensures video fits while maintaining aspect ratio */
+}
+
+.taken_picture {
+  width: 600px;
+  height: 400px;
+  border-radius: 20px; /* Rounded corners */
+  border: 5px solid #704E2E;
 }
