@@ -1,4 +1,5 @@
 .env
+node_modules
 
 # Python cache and environment files
 __pycache__/
