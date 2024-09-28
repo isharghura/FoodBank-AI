@@ -66,6 +66,6 @@ For any questions or suggestions, please reach out to any contributors below
 
 ## Authors
 - *Yufeng Liu*
-- *Juan Marunlanda*
+- *Juan Marulanda*
 - *Ishar Ghura*
 - *Raphael Onana*
