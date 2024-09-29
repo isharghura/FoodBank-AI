@@ -1,27 +1,45 @@
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
-import "./Profile.css"
-
+import './Profile.css';
 import profile from '../assets/profile.png';
 
 function UserProfile() {
-  // Dummy data for submitted items
-  const submittedItems = [
-    { name: 'Apple', category: 'Fruit', date: '2023-09-25', points: 50 },
-    { name: 'Carrot', category: 'Vegetable', date: '2023-09-20', points: 30 },
-    { name: 'Cereal', category: 'Grains', date: '2023-09-15', points: 40 },
-    // Add more items as needed
-  ];
+  const [submittedItems, setSubmittedItems] = useState([]);
+  const [userId, setUserId] = useState(1); // Assuming user ID is 1 for demonstration
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5001/get-user-data/1`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+
+        const formattedData = data.map(item => ({
+          name: item[0],
+          date: item[1],
+          points: item[2],
+        }));
+
+        setSubmittedItems(formattedData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [userId]);
 
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
-      {/* Header Section with Background and Profile */}
       <div
         style={{
           backgroundColor: 'grey',
           backgroundPosition: 'center',
           height: '15rem',
         }}
-        class="bg-cover bg-center, h-250 position-relative"
+        className="bg-cover bg-center h-250 position-relative"
       >
         <Container fluid>
           <Row className="justify-content-center align-items-center" style={{ height: '100%' }}>
@@ -29,23 +47,20 @@ function UserProfile() {
               <Image
                 src={profile}
                 roundedCircle
-                style={{ width: '27vh', border: '5px solid white', position: 'relative', top: '10rem'}}
-                class="rounded-circle"
+                style={{ width: '27vh', border: '5px solid white', position: 'relative', top: '10rem' }}
+                className="rounded-circle"
               />
             </Col>
             <Col md={7} className="text-center text-white mt-5">
-              <div className="name-div" style={{}}>
+              <div className="name-div">
                 <h1 className="mt-3">John Doe</h1>
-                <p className="fst-italic">john.doe@example.com</p>
               </div>
-
             </Col>
             <Col md={3} className="text-center text-white mt-5">
-              <div className="leaderboard-status" style={{}}>
+              <div className="leaderboard-status">
                 <h3 className="text-warning">Leaderboard Status</h3>
                 <p className="fs-3 font-weight-bold">#3</p>
               </div>
-              <div></div>
             </Col>
           </Row>
         </Container>
@@ -61,10 +76,9 @@ function UserProfile() {
                 <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    {item.category}
                   </Card.Subtitle>
                   <Card.Text>
-                    Submitted on: {item.date} <br />
+                    Submitted on: {new Date(item.date).toLocaleString()} <br />
                     Points: {item.points}
                   </Card.Text>
                 </Card.Body>

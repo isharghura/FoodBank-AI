@@ -38,9 +38,11 @@ def get_all_users():
     users = db.get_users_ordered_by_points()
     return jsonify(users)
 
-@app.route("/get-user-data")
+
+@app.route("/get-user-data/<int:user_id>")
 def get_user(user_id):
-    return db.food_submission_times_of_user(user_id)
+    submissions = db.food_submission_times_of_user(user_id)
+    return jsonify(submissions)
 
 @app.route("/insert-food", methods=['POST'])
 def insert_food(food_name, points, expiry_date, user_id):
