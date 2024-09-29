@@ -47,10 +47,10 @@ def get_users_ordered_by_points():
         result = cur.fetchall()
         connection.commit()
 
-        if result:
-            return result
-        else:
-            return None
+        formatted_users = [
+            {"id": user[0], "username": user[1], "points": user[2]} for user in result
+        ]
+        return formatted_users
 
     except Exception as err:
         print("Error retrieving all the users' points: ", err)
