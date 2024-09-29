@@ -51,10 +51,10 @@ function UserProfile() {
   }, [userId]);
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#79745C', minHeight: '100vh' }}>
       <div
         style={{
-          backgroundColor: 'grey',
+          backgroundColor: '#709176',
           backgroundPosition: 'center',
           height: '15rem',
         }}
