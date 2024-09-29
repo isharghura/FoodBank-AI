@@ -32,12 +32,14 @@ code {
     monospace;
 }
 .camera-screen {
+  align-items: center;
   width: 600px;
   height: 400px;
   border-radius: 20px; /* Rounded corners */
   border: 5px solid #704E2E;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Smooth shadow for a nice effect */
   object-fit: cover; /* Ensures video fits while maintaining aspect ratio */
+
 }
 
 .taken_picture {
