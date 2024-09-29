@@ -3,6 +3,7 @@ import React, {useRef, useEffect, useState} from "react";
 import ListFood from "./ListFood";
 import '../index.css';
 import '../Pages/Profile';
+import './camera.css';
 
 
 const WebCam = () => {
@@ -103,16 +104,17 @@ const WebCam = () => {
   return (
     // <div className="background">
     <div>
-      <h1 className= "skibidi"><a href="ranks">LeaderBoard</a></h1>  
+      <h1 className= "skibidi fst-italic font-weight-bold"><a href="ranks">LeaderBoard 3</a></h1>  
       <div className="top-right-button">
         <button className="btn"  onClick={() => window.location.href='profile'}><a href='profile'></a></button>
       </div>
       
       <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen" />
         <div>
-          <button className="take-photo-button" onClick={takePhoto}>
-            Take Photo
-          </button>
+        <button class="button" onClick={takePhoto}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg>
+          <span class="lable">Take a Photo</span>
+        </button>
         </div>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {photo && (
