@@ -6,7 +6,7 @@ const WebCam = () => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [photo, setPhoto] = useState(null);
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     // Start the webcam stream as soon as the component mounts
   useEffect(() => {
@@ -54,7 +54,7 @@ const WebCam = () => {
         const imageData = canvas.toDataURL('image/png');
         setPhoto(imageData); // Store the image for later use
         
-        
+        // attempt to save the image to the server
         try {
           const response = await fetch('http://localhost:5000/save-image', {
             method: 'POST',
