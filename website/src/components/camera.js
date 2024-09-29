@@ -15,7 +15,6 @@ const WebCam = () => {
 
   // const navigate = useNavigate()
 
-  // Start the webcam stream as soon as the component mounts
   useEffect(() => {
     const startWebcam = async () => {
       try {
@@ -30,7 +29,6 @@ const WebCam = () => {
 
     startWebcam();
 
-    // Cleanup function to stop the webcam stream when component unmounts
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         const stream = videoRef.current.srcObject;
@@ -49,17 +47,14 @@ const WebCam = () => {
 
     setButtonClicked(true)
 
-    // Set canvas width and height to match the video feed
     canvas.width = width;
     canvas.height = height;
 
-    // Draw the video frame onto the canvas
     const ctx = canvas.getContext('2d');
     ctx.drawImage(videoRef.current, 0, 0, width, height);
 
-    // Convert the canvas image to base64 string
     const imageData = canvas.toDataURL('image/png');
-    setPhoto(imageData); // Store the image for later use
+    setPhoto(imageData);
 
     try {
       const response = await fetch('http://localhost:5001/save-image', {
@@ -67,7 +62,7 @@ const WebCam = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ imageData }), // Send the base64 image to the backend
+        body: JSON.stringify({ imageData }),
       });
 
       const result = await response.json();
@@ -90,7 +85,7 @@ const WebCam = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ mlJson }), // Send the base64 image to the backend
+        body: JSON.stringify({ mlJson }),
       });
 
       const result = await response.json();
@@ -109,7 +104,7 @@ const WebCam = () => {
   return (
     // <div className="background">
     <div>
-      <h1 className= "skibidi fst-italic font-weight-bold"><a href="ranks">LeaderBoard</a></h1>  
+      <h1 className= "skibidi fst-italic font-weight-bold"><a href="ranks">LeaderBoard 3</a></h1>  
       <div className="top-right-button">
         <button className="btn"  onClick={() => window.location.href='profile'}><a href='profile'></a></button>
       </div>
