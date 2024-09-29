@@ -1,5 +1,5 @@
 import pandas as pd
-
+import json
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
@@ -13,6 +13,8 @@ print(df.head())
 
 # num of unique classes
 num_classes = len(df["label"].unique())
+with open("num_classes.json", "w") as f:
+    json.dump({"num_classes": num_classes}, f)
 
 # load pretrained model
 model = models.resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
@@ -60,6 +62,14 @@ transform = transforms.Compose(
 
 # create dataset and dataloader
 dataset = FoodDataset(df, transform=transform)
+dataset_metadata = {
+    "labels": df["label"].unique().tolist(),
+    "label_to_index": dataset.label_to_index,
+}
+
+with open("dataset_metadata.json", "w") as f:
+    json.dump(dataset_metadata, f)
+
 dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
 
 # loss func and optim
@@ -69,6 +79,10 @@ optimizer = torch.optim.Adam(model.fc.parameters(), lr=0.001)
 # training loop
 num_epcochs = 5
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+with open("device.json", "w") as f:
+    json.dump({"device": str(device)}, f)
+print("Dumped everything")
+
 model = model.to(device)
 
 for epoch in range(num_epcochs):
