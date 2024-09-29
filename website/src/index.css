@@ -26,6 +26,25 @@ body {
   background-color: #79745C;  /* Hover effect */
 }
 
+.top-right-button {
+  position: absolute;
+  top: 10px; /* distance from the top */
+  right: 10px; /* distance from the right */
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -49,7 +68,16 @@ code {
   border: 5px solid #704E2E;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
+}
+
+.skibidi {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  color: red;
 }

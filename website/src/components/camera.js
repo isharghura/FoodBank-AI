@@ -1,12 +1,13 @@
 import React, {useRef, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom"
-
+// import {useNavigate} from "react-router-dom"
+import '../index.css';
+import '../Pages/Profile'
 
 const WebCam = () => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [photo, setPhoto] = useState(null);
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     // Start the webcam stream as soon as the component mounts
   useEffect(() => {
@@ -76,17 +77,18 @@ const WebCam = () => {
     };
 
     return(
-        <div>
-      <h1><a href="ranks">LeaderBoard 3</a></h1>
       <div>
+        <h1 className= "skibidi"><a href="ranks">LeaderBoard 3</a></h1>  
+        <div className="top-right-button">
+          <button className="btn"><a href='profile'>Top Right Button</a></button>
+        </div>
 
-      </div>
-      <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen"/>
-      <div>
-        <button className="take-photo-button" onClick={takePhoto}>
-          Take Photo
-        </button>
-      </div>
+        <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen"/>
+        <div>
+          <button className="take-photo-button" onClick={takePhoto}>
+            Take Photo
+          </button>
+        </div>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {photo && (
         <div>
