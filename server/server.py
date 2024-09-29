@@ -5,6 +5,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dataProcessing.food_processor import process_food_data 
+from cv_data.testing import run_prediction
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
@@ -12,7 +13,8 @@ CORS(app)  # This will enable CORS for all routes
 db = FoodQuestDB("foodbank", "postgres", "localhost", 5432, 123456)
 
 def predict_image(base64):
-    model_output = "apple"
+    model_output = run_prediction(base64)
+    print(f"Model predicted: {model_output}")
     return gather_data_from_food(model_output)
 
 def gather_data_from_food(food_item):
