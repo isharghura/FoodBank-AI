@@ -1,3 +1,5 @@
+import base64
+import io
 import pandas as pd
 import json
 import torch
@@ -42,17 +44,19 @@ def preprocess_image(image_path):
     return image
 
 
-image_path = "../apple2.webp"
-image = preprocess_image(image_path)
-image = image.to(device)
+def run_prediction(base64_img):
+    image_data = base64.b64decode(base64_img)
+    image = Image.open(io.BytesIO(image_data)).convert("RGB")
 
-with torch.no_grad():
-    outputs = model(image)
-    top5_probs, top5_indices = torch.topk(outputs, k=5)
+    image = preprocess_image(image)
+    image = image.to(device)
 
-top5_labels = [labels[i.item()] for i in top5_indices[0]]
+    with torch.no_grad():
+        outputs = model(image)
+        top_prob, top_index = torch.max(outputs, 1)
 
-for i, label in enumerate(top5_labels):
-    print(
-        f"Top {i + 1} prediction: {label} with probability: {top5_probs[0][i].item():.4f}"
-    )
+    top_label = labels[top_index.item()]
+
+    result = {"label": top_label, "probability": top_prob.item()}
+
+    return result
