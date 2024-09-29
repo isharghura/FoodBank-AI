@@ -55,9 +55,8 @@ const WebCam = () => {
         const imageData = canvas.toDataURL('image/png');
         setPhoto(imageData); // Store the image for later use
         
-        
         try {
-          const response = await fetch('http://localhost:5000/save-image', {
+          const response = await fetch('http://localhost:5001/save-image', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -67,6 +66,7 @@ const WebCam = () => {
       
           const result = await response.json();
           if (response.ok) {
+            console.log('result: ', result)
             console.log('Image saved:', result.filePath);
           } else {
             console.error('Failed to save image:', result.error);

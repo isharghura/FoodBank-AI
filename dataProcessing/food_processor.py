@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import json
 from collections import defaultdict
 
-load_dotenv('../env/.env')
+load_dotenv()
 
 def get_food_data(input_data):
     """
@@ -18,10 +18,11 @@ def get_food_data(input_data):
     """
 
     api_key = os.getenv('API_KEY')
+    print(f"api-Key {api_key}")
     if api_key == None: return "Not able to retrieve food data, API KEY might be \'Null\'"
 
     api_url = f"https://api.nal.usda.gov/fdc/v1/foods/search?api_key={api_key}&query={input_data}"
-
+    
     try:
         response = requests.get(api_url)
         response.raise_for_status()  # In case of errors for bad responses
@@ -81,7 +82,6 @@ def process_food_data(food_item):
     Returns:
     dict: A dictionary containing the processed summary of the food item.
     """
-
     food_data = get_food_data(food_item)
     result = process_New_json(food_data)
     return result
