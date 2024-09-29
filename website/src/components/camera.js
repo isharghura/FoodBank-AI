@@ -86,7 +86,7 @@ const WebCam = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ mlResult }), // Send the base64 image to the backend
+        body: JSON.stringify({ mlJson }), // Send the base64 image to the backend
       });
 
       const result = await response.json();
@@ -117,8 +117,7 @@ const WebCam = () => {
         <div>
           <h2>Captured Photo:</h2>
           <img src={photo} alt="Captured" className="taken_picture" />
-          {result}
-          <ListFood data={result}></ListFood>
+          <ListFood data={mlJson}></ListFood>
           <button className="donate-button" onClick={donateItem}>
             Donate!
           </button>

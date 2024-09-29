@@ -41,7 +41,7 @@ def get_all_users():
 def get_user(user_id):
     return db.food_submission_times_of_user(user_id)
 
-@app.route("/insert-food")
+@app.route("/insert-food", methods=['POST'])
 def insert_food(food_name, points, expiry_date, user_id):
     return db.insert_food(food_name, points, expiry_date, user_id)
 

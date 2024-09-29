@@ -94,8 +94,6 @@ def process_New_json(json_data):
         "category": (
             json_data["foods"][0]["foodCategory"] if json_data["foods"] else "Unknown"
         ),
-        "ingredients": list(nutrient_totals.keys()),
-        "total_value": sum(nutrient_totals.values()),
         "donation_score": donation_score,
     }
 

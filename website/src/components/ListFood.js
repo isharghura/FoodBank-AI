@@ -6,7 +6,9 @@ function ListFood(props) {
     return (
         <div>
             <p>
-                {data["label"]}
+                Our model recognized your object as a(n) {data["item"]}.
+                <br></br>
+                Donating this item will grant you {data["donation_score"]} points!
             </p>
         </div>
     )
