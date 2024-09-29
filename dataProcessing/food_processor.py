@@ -38,7 +38,7 @@ def get_food_data(input_data):
 def process_New_json(json_data):
     """
     Processes the JSON response from the USDA Food Data Central API and aggregates nutrient values,
-    including the amount of sugar.
+    including the amount of sugar, and calculates a donation score.
     """
     # Check if the "foods" key exists in the response
     if "foods" not in json_data:
@@ -48,7 +48,6 @@ def process_New_json(json_data):
 
     # Initialize a dictionary to hold the sum of values by nutrient name
     nutrient_totals = defaultdict(float)
-    sugar_content = 0.0
 
     for food in json_data["foods"]:
         for nutrient in food["foodNutrients"]:
@@ -56,27 +55,48 @@ def process_New_json(json_data):
             value = nutrient["value"]
             nutrient_totals[nutrient_name] += value
 
-            # Look specifically for sugar-related nutrients
-            if "Sugar" in nutrient_name or "Sugars, total" in nutrient_name:
-                sugar_content += value
+    # Extract relevant nutrients
+    protein = nutrient_totals.get("Protein", 0)
+    fiber = nutrient_totals.get("Fiber, total dietary", 0)
+    carbohydrates = nutrient_totals.get("Carbohydrate, by difference", 0)
+    sugars = nutrient_totals.get("Sugars, total", 0)
+    calories = nutrient_totals.get("Energy", 0)
 
-    # Prepare the new JSON structure
-    total_value = sum(nutrient_totals.values())
-    ingredients = list(nutrient_totals.keys())
+    protein_factor = protein / 50 if protein < 50 else 1.0
+    fiber_factor = fiber / 30 if fiber < 30 else 1.0
+    carb_factor = (carbohydrates - sugars) / 100 if (carbohydrates - sugars) > 0 else 0
+    calorie_factor = 1 - (calories - 50) / (350 - 50) if 50 <= calories <= 350 else 0
+    perishability_factor = 0
 
-    # Identify vitamins if any
-    vitamins = [name for name in ingredients if "Vitamin" in name]
+    # Assign weights to factors
+    W_p = 0.3
+    W_f = 0.2
+    W_c = 0.2
+    W_cal = 0.2
+    W_per = 0.1
 
-    # Final JSON structure
+    # Calculate final score
+    donation_score = round(
+        (
+            W_p * protein_factor
+            + W_f * fiber_factor
+            + W_c * carb_factor
+            + W_cal * calorie_factor
+            - W_per * perishability_factor
+        )
+    )
+
+    print("Donation score: " + donation_score)
+
+    # Prepare the new JSON structure with score
     result = {
         "item": json_data["foodSearchCriteria"]["generalSearchInput"],
         "category": (
             json_data["foods"][0]["foodCategory"] if json_data["foods"] else "Unknown"
         ),
-        "ingredients": ingredients,
-        "vitamins": vitamins,
-        "total_value": total_value,
-        "sugar_content": sugar_content,  # Include the sugar content
+        "ingredients": list(nutrient_totals.keys()),
+        "total_value": sum(nutrient_totals.values()),
+        "donation_score": donation_score,
     }
 
     output = json.dumps(result, indent=4)
@@ -94,7 +114,6 @@ def process_food_data(food_item):
         return food_data
 
     result = process_New_json(food_data)
-    print(result)
     return result
 
 
