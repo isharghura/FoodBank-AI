@@ -86,7 +86,7 @@ def process_New_json(json_data):
         )
     )
 
-    print("Donation score: " + donation_score)
+    print(f"Donation score: {donation_score}")
 
     # Prepare the new JSON structure with score
     result = {

@@ -6,11 +6,14 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dataProcessing.food_processor import process_food_data 
 from cv_data.testing import run_prediction
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
-
-db = FoodQuestDB("FoodQuest", "postgres", "localhost", 5432, "postgres")
+load_dotenv()
+databaseName = os.getenv("DATABASE_NAME")
+databasePass = os.getenv("PASSWORD")
+db = FoodQuestDB(databaseName, "postgres", "localhost", 5432, databasePass)
 
 def predict_image(base64):
     model_output = run_prediction(base64)
