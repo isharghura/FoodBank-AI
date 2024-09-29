@@ -87,34 +87,6 @@ def read_resized_dir(dir_path):
     return data
 
 
-# def read_resized_dir(dir_path):
-#     images = []
-#     for filename in os.listdir(dir_path):
-#         # Construct the path to the subdirectory
-#         food = filename.split("/")[0].split(".")[0].split("_")[:-1]
-
-#         if (len(food) == 1):
-#             food = food[0]
-#         else:
-#             food = " ".join(food)
-
-#         count = 0
-#         file_path = os.path.join(dir_path, filename)
-#         img = Image.open(file_path, 'r')
-#         pixel_values = list(img.getdata())
-#         print(f"len(pixel_values): {len(pixel_values)}")
-#         if img is not None:
-#             images.append(pixel_values)
-#             count += 1
-
-#         if (food not in data.keys()):
-#             data[food] = []
-#             data[food] = data[food].append(images)
-#             images = []
-
-#     return data
-
-
 def dict_to_dataframe(image_dict):
     rows = []
     expected_pixels = 224 * 224 * 3  # For 224x224 images
