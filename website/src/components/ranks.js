@@ -32,39 +32,39 @@ const Ranks = () => {
     const sortedUsers = users.sort((a, b) => b.points - a.points);
 
     return (
-        <div >
-            
-            <h1>Leaderboard</h1>
-        <div  style={{ position: 'relative', padding: '20px' }}>
-            {/* Home Icon on the Left */}
-            <a href="/" style={{ textDecoration: 'none', color: 'black', position: 'absolute', top: '10px', left: '10px' }}>
-                <FaHome size={40} /> {/* Adjust size if needed */}
-            </a>
-        
+        <div className='bodytypeshit'>
+            <div >        
+                <h1>Leaderboard</h1>
+                <div  style={{ position: 'relative', padding: '20px' }}>
+                    {/* Home Icon on the Left */}
+                    <a href="/" style={{ textDecoration: 'none', color: 'black', position: 'absolute', top: '10px', left: '10px' }}>
+                        <FaHome size={40} /> {/* Adjust size if needed */}
+                    </a>
+                </div>
+                <br>
+                </br>
+                <div className='table-of-stuff'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sortedUsers.map((user, index) => (
+                                <tr key={user.id}>
+                                    <td>{index + 1}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.points}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <br>
-        </br>
-        <div className='table-of-stuff'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedUsers.map((user, index) => (
-                        <tr key={user.id}>
-                            <td>{index + 1}</td>
-                            <td>{user.username}</td>
-                            <td>{user.points}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    </div>
     );
 };
 
