@@ -12,3 +12,7 @@ env/
 # IDE files
 .vscode/
 .idea/
+
+data
+*.pkl
+cv_data/venv_cv
