@@ -2,7 +2,7 @@
 
 ## Overview
 
-FoodQuest is a gamified web application designed to encourage food donations by allowing users to donate items, track their contributions, and earn points based on the nutritional value of the donated items. The application uses a combination of cutting-edge technologies including computer vision for food item recognition, a robust backend with a Postgres database, and an interactive React frontend. Users can see their rankings on a leadership board, motivating them to donate more.
+FoodQuest is a gamified web application designed to encourage food donations by allowing users to donate items, track their contributions, and earn points based on the nutritional value of the donated items. The application uses a combination of latest technologies including computer vision for food item recognition, a backend with a Postgres database, and an interactive React frontend. Users can see their rankings on a leadership board, motivating them to donate more.
 
 ## Features
 
