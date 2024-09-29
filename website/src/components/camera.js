@@ -36,7 +36,6 @@ const WebCam = () => {
     
 
 
-
     // Capture the current frame from the video stream
     const takePhoto = async () => {
         const width = videoRef.current.videoWidth;
@@ -78,7 +77,7 @@ const WebCam = () => {
 
     return(
         <div>
-      <h1>LeaderBoard #</h1>
+      <h1><a href="ranks">LeaderBoard 3</a></h1>
       <div>
 
       </div>
