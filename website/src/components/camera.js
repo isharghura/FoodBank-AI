@@ -71,7 +71,7 @@ const WebCam = () => {
 
       const result = await response.json();
       if (response.ok) {
-        console.log('result a: ', result)
+        console.log('result: ', result)
         setMlJson(result)
       } else {
         console.error('Failed to save image:', result.error);
@@ -95,7 +95,8 @@ const WebCam = () => {
       const result = await response.json();
       if (response.ok) {
         console.log('result: ', result)
-        console.log('Image saved:', result.filePath);
+        alert("You have succesfully donated the item!")
+        setButtonClicked(false)
       } else {
         console.error('Failed to save image:', result.error);
       }
@@ -106,15 +107,17 @@ const WebCam = () => {
 
   return (
     <div>
-      <h1>LeaderBoard #</h1>
-      <div>
+      <h1 className= "skibidi"><a href="ranks">LeaderBoard 3</a></h1>  
+      <div className="top-right-button">
+        <button className="btn"  onClick={() => window.location.href='profile'}><a href='profile'></a></button>
       </div>
+      
       <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen" />
-      <div>
-        <button className="take-photo-button" onClick={takePhoto}>
-          Take Photo
-        </button>
-      </div>
+        <div>
+          <button className="take-photo-button" onClick={takePhoto}>
+            Take Photo
+          </button>
+        </div>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {photo && (
         <div>

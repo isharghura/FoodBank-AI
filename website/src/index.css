@@ -100,3 +100,30 @@ a {
 h1 {
   color: red;
 }
+
+.top-right-button .btn a {
+  color: rgb(0, 0, 0) !important; /* Example of using specificity */
+  text-decoration: none;
+}
+
+.skibidi a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+.btn {
+  width: 50px; /* Set the desired width */
+  height: 50px; /* Set the desired height */
+  background-image: url('assets/profile.png'); /* The URL to your PNG image */
+  background-size: cover; /* Ensures the image covers the button */
+  background-position: center; /* Centers the image */
+  border-radius: 50%; /* This makes it a circle */
+  border: none; /* Optional: Removes the default border */
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Optional hover effect */
+  cursor: pointer;
+}
+

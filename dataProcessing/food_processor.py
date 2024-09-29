@@ -3,9 +3,20 @@ import os
 from dotenv import load_dotenv
 import json
 from collections import defaultdict
+import random
+from datetime import datetime, timedelta
 
 load_dotenv()
 
+def return_random_date(start_date, end_date):
+    # Calculate the difference between the two dates
+    delta = end_date - start_date
+
+    # Generate a random number of days within the range
+    random_days = random.randint(0, delta.days)
+
+    # Get the random date
+    return start_date + timedelta(days=random_days)
 
 def get_food_data(input_data):
     """
@@ -94,7 +105,8 @@ def process_New_json(json_data):
         "category": (
             json_data["foods"][0]["foodCategory"] if json_data["foods"] else "Unknown"
         ),
-        "donation_score": donation_score,
+        "expiry_time": datetime.strftime(return_random_date(datetime.now(), datetime(2024, 10, 10)), '%Y-%m-%d %H:%M'),
+        "donation_score": int(donation_score * random.uniform(5, 15)),
     }
 
     output = json.dumps(result, indent=4)
