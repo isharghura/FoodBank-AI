@@ -5,12 +5,14 @@ import profile from '../assets/profile.png';
 
 function UserProfile() {
   const [submittedItems, setSubmittedItems] = useState([]);
-  const [userId, setUserId] = useState(1); // Assuming user ID is 1 for demonstration
+  const userId = 2
+  const [username, setUsername] = useState(''); // State for username
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/get-user-data/1`);
+        // Fetch user data
+        const response = await fetch(`http://localhost:5001/get-user-data/${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -28,7 +30,21 @@ function UserProfile() {
       }
     };
 
+    const fetchUsername = async () => {
+      try {
+        const response = await fetch(`http://localhost:5001/get-username/${userId}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsername(data[0]); // Set the username state
+      } catch (error) {
+        console.error('Error fetching username:', error);
+      }
+    };
+
     fetchUserData();
+    fetchUsername(); // Call to fetch the username
   }, [userId]);
 
   return (
@@ -53,13 +69,11 @@ function UserProfile() {
             </Col>
             <Col md={7} className="text-center text-white mt-5">
               <div className="name-div">
-                <h1 className="mt-3">John Doe</h1>
+                <h1 className="mt-3">{username || 'Loading...'}</h1> {/* Display username */}
               </div>
             </Col>
             <Col md={3} className="text-center text-white mt-5">
               <div className="leaderboard-status">
-                <h3 className="text-warning">Leaderboard Status</h3>
-                <p className="fs-3 font-weight-bold">#3</p>
               </div>
             </Col>
           </Row>

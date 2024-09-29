@@ -32,6 +32,12 @@ def get_all_users():
     return jsonify(users)
 
 
+@app.route("/get-username/<int:user_id>")
+def get_username_route(user_id):
+    username = db.get_username(user_id)
+    return jsonify(username)
+
+
 @app.route("/get-user-data/<int:user_id>")
 def get_user(user_id):
     submissions = db.food_submission_times_of_user(user_id)
