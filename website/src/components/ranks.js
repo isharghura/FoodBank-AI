@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Card, Image } from 'react-bootstrap';
+import { FaHome } from 'react-icons/fa';
+import './ranks.css';
 
 const Ranks = () => {
     const [users, setUsers] = useState([]);
@@ -29,8 +32,19 @@ const Ranks = () => {
     const sortedUsers = users.sort((a, b) => b.points - a.points);
 
     return (
-        <div>
+        <div >
+            
             <h1>Leaderboard</h1>
+        <div  style={{ position: 'relative', padding: '20px' }}>
+            {/* Home Icon on the Left */}
+            <a href="/" style={{ textDecoration: 'none', color: 'black', position: 'absolute', top: '10px', left: '10px' }}>
+                <FaHome size={40} /> {/* Adjust size if needed */}
+            </a>
+        
+        </div>
+        <br>
+        </br>
+        <div className='table-of-stuff'>
             <table>
                 <thead>
                     <tr>
@@ -50,6 +64,7 @@ const Ranks = () => {
                 </tbody>
             </table>
         </div>
+    </div>
     );
 };
 

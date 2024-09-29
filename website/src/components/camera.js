@@ -105,6 +105,7 @@ const WebCam = () => {
   }
 
   return (
+    // <div className="background">
     <div>
       <h1 className= "skibidi"><a href="ranks">LeaderBoard 3</a></h1>  
       <div className="top-right-button">
@@ -130,6 +131,7 @@ const WebCam = () => {
         </div>
       )}
     </div>
+    // </div>
   );
 };
 

@@ -1,12 +1,17 @@
 body {
-  margin: 0;
+  /* margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
   background: #709176;
 }
+
+/* .background {
+  background-color: #45a049;
+} */
+
 .take-photo-button {
   width: 80px;      /* Adjust to control the oval width */
   height: 40px;     /* Adjust to control the oval height */

@@ -1,5 +1,7 @@
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 import "./Profile.css"
+import { FaHome } from 'react-icons/fa';
+
 
 import profile from '../assets/profile.png';
 
@@ -25,6 +27,13 @@ function UserProfile() {
       >
         <Container fluid>
           <Row className="justify-content-center align-items-center" style={{ height: '100%' }}>
+            <Col md={1} className="text-center">
+              {/* Home Icon on the Left */}
+              <a href="/" style={{ textDecoration: 'none', color: 'white' }}>
+                <FaHome size={40} /> {/* Adjust the size as needed */}
+              </a>
+            </Col>
+            
             <Col md={2} className="text-center">
               <Image
                 src={profile}

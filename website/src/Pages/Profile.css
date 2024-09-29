@@ -8,6 +8,9 @@
     }
 }
 
+/* body{
+  background: #709176;
+} */
 
 /* Styles for medium and small screens */
 @media (max-width: 991px) { /* This targets md and sm screens */
