@@ -1,16 +1,31 @@
-import React from 'react';
-
-// Sample user data
-const users = [
-    { id: 1, name: 'person1', points: 120 },
-    { id: 2, name: 'person2', points: 200 },
-    { id: 3, name: 'person3', points: 150 },
-    { id: 4, name: 'person4', points: 180 },
-    { id: 5, name: 'person5', points: 220 },
-];
+import React, { useEffect, useState } from 'react';
 
 const Ranks = () => {
-    // Sort users by points in descending order
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('http://localhost:5001/get-all-users');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                const formattedData = data.map(user => ({
+                    id: user[0],
+                    username: user[1],
+                    points: user[2]
+                }));
+                const sortedData = formattedData.sort((a, b) => b.points - a.points);
+                setUsers(sortedData);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
     const sortedUsers = users.sort((a, b) => b.points - a.points);
 
     return (
@@ -28,7 +43,7 @@ const Ranks = () => {
                     {sortedUsers.map((user, index) => (
                         <tr key={user.id}>
                             <td>{index + 1}</td>
-                            <td>{user.name}</td>
+                            <td>{user.username}</td>
                             <td>{user.points}</td>
                         </tr>
                     ))}

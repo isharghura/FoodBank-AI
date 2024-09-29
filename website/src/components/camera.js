@@ -1,6 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"
+import React, {useRef, useEffect, useState} from "react";
+// import {useNavigate} from "react-router-dom"
 import ListFood from "./ListFood";
+import '../index.css';
+import '../Pages/Profile';
+
 
 const WebCam = () => {
   const videoRef = useRef(null);
@@ -104,15 +107,17 @@ const WebCam = () => {
 
   return (
     <div>
-      <h1>LeaderBoard #</h1>
-      <div>
+      <h1 className= "skibidi"><a href="ranks">LeaderBoard 3</a></h1>  
+      <div className="top-right-button">
+        <button className="btn"  onClick={() => window.location.href='profile'}><a href='profile'></a></button>
       </div>
+      
       <video ref={videoRef} autoPlay width="600" height="400" children className="camera-screen" />
-      <div>
-        <button className="take-photo-button" onClick={takePhoto}>
-          Take Photo
-        </button>
-      </div>
+        <div>
+          <button className="take-photo-button" onClick={takePhoto}>
+            Take Photo
+          </button>
+        </div>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       {photo && (
         <div>

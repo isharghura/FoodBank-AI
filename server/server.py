@@ -28,7 +28,8 @@ def send_image():
 
 @app.route("/get-all-users")
 def get_all_users():
-    return db.get_users_ordered_by_points()
+    users = db.get_users_ordered_by_points()
+    return jsonify(users)
 
 @app.route("/get-user-data")
 def get_user(user_id):
