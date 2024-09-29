@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #709176;
 }
+
 .take-photo-button {
   width: 80px;      /* Adjust to control the oval width */
   height: 40px;     /* Adjust to control the oval height */
@@ -26,11 +27,11 @@ body {
   background-color: #79745C;  /* Hover effect */
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .camera-screen {
   align-items: center;
   width: 600px;
@@ -39,7 +40,6 @@ code {
   border: 5px solid #704E2E;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Smooth shadow for a nice effect */
   object-fit: cover; /* Ensures video fits while maintaining aspect ratio */
-
 }
 
 .taken_picture {
