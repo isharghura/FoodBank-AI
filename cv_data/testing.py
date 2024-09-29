@@ -30,8 +30,7 @@ model.load_state_dict(torch.load("ml_stuff/fine_tuned_model.pth"))
 model.eval()
 
 
-def preprocess_image(image_path):
-    image = Image.open(image_path).convert("RGB")
+def preprocess_image(image):
     transform = transforms.Compose(
         [
             transforms.Resize((224, 224)),
@@ -44,7 +43,21 @@ def preprocess_image(image_path):
     return image
 
 
+def add_padding(base64_str):
+    padding = len(base64_str) % 4
+    if padding != 0:
+        base64_str += "=" * (4 - padding)
+    return base64_str
+
+
 def run_prediction(base64_img):
+    print("Length of Base64 String:", len(base64_img))
+
+    if base64_img.startswith("data:image"):
+        base64_img = base64_img.split(",")[1]
+
+    base64_img = add_padding(base64_img)
+
     image_data = base64.b64decode(base64_img)
     image = Image.open(io.BytesIO(image_data)).convert("RGB")
 

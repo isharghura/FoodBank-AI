@@ -10,7 +10,7 @@ from cv_data.testing import run_prediction
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 
-db = FoodQuestDB("foodbank", "postgres", "localhost", 5432, 123456)
+db = FoodQuestDB("FoodQuest", "postgres", "localhost", 5432, "postgres")
 
 def predict_image(base64):
     model_output = run_prediction(base64)
@@ -29,7 +29,7 @@ def send_image():
     data = request.json
     base64_image = data.get('imageData')
     return predict_image(base64_image)
-    
+
 @app.route("/get-all-users")
 def get_all_users():
     return db.get_users_ordered_by_points()
