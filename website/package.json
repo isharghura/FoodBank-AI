@@ -69,6 +69,7 @@
     "body-parser": "^1.20.3",
     "bonjour-service": "^1.2.1",
     "boolbase": "^1.0.0",
+    "bootstrap": "^5.3.3",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.3",
     "browser-process-hrtime": "^1.0.0",
@@ -624,6 +625,7 @@
     "raw-body": "^2.5.2",
     "react": "^18.3.1",
     "react-app-polyfill": "^3.0.0",
+    "react-bootstrap": "^2.10.5",
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.3.1",
     "react-error-overlay": "^6.0.11",
@@ -853,7 +855,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -865,5 +866,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": ""
 }
