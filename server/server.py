@@ -18,17 +18,10 @@ db = FoodQuestDB(databaseName, "postgres", "localhost", 5432, databasePass)
 def predict_image(base64):
     model_output = run_prediction(base64)
     print(f"Model predicted: {model_output}")
-    return gather_data_from_food(model_output)
-
-def gather_data_from_food(food_item):
-    return process_food_data(food_item)
+    return process_food_data(model_output)
 
 @app.route("/save-image", methods=['POST'])
 def send_image():
-    # send base64 image to ml
-    # take output food name, send to food_processor
-    # take output from food_processor, convert to points
-    # add food and data to db
     data = request.json
     base64_image = data.get('imageData')
     return predict_image(base64_image)
@@ -42,8 +35,13 @@ def get_user(user_id):
     return db.food_submission_times_of_user(user_id)
 
 @app.route("/insert-food", methods=['POST'])
-def insert_food(food_name, points, expiry_date, user_id):
-    return db.insert_food(food_name, points, expiry_date, user_id)
+def insert_food():
+    data = request.json
+    data = data["mlJson"]
+    print(f"request: {data}")
+    #request: {'mlJson': {'item': 'milk', 'expiry_time': '2024-10-03 02:09:34.657517', 'donation_score': 1}}
+    db.insert_food(data['item'], data['donation_score'], data['expiry_time'], 1)
+    return {"message": "Successfully added food item to database"}
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)

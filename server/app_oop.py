@@ -93,11 +93,11 @@ class FoodQuestDB:
         timeNow = datetime.now
         query = f"""
             INSERT INTO foods (food_name, expiry)
-            VALUES ({food_name}, {expiry_date})
+            VALUES ('{food_name}', '{expiry_date}')
             RETURNING food_id;
 
             INSERT INTO points (food_id, user_id, time_submitted, points_awarded)
-            VALUES (currval('foods_food_id_seq'), {user_id}, {timeNow}, {points});
+            VALUES (currval('foods_food_id_seq'), '{user_id}', '{datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M')}', '{points}');
         """
         
         return self.execute_query(query)

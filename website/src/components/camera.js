@@ -68,7 +68,7 @@ const WebCam = () => {
 
       const result = await response.json();
       if (response.ok) {
-        console.log('result a: ', result)
+        console.log('result: ', result)
         setMlJson(result)
       } else {
         console.error('Failed to save image:', result.error);
@@ -92,7 +92,8 @@ const WebCam = () => {
       const result = await response.json();
       if (response.ok) {
         console.log('result: ', result)
-        console.log('Image saved:', result.filePath);
+        alert("You have succesfully donated the item!")
+        setButtonClicked(false)
       } else {
         console.error('Failed to save image:', result.error);
       }
