@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
-import { FaHome } from 'react-icons/fa';
+import { FaTrophy } from 'react-icons/fa';
 import './ranks.css';
 
 const Ranks = () => {
@@ -33,29 +33,23 @@ const Ranks = () => {
 
     return (
         <div className='bodytypeshit'>
-            <div >        
-                <h1>Leaderboard</h1>
-                <div  style={{ position: 'relative', padding: '20px' }}>
-                    {/* Home Icon on the Left */}
-                    <a href="/" style={{ textDecoration: 'none', color: 'black', position: 'absolute', top: '10px', left: '10px' }}>
-                        <FaHome size={40} /> {/* Adjust size if needed */}
-                    </a>
-                </div>
-                <br>
-                </br>
-                <div className='table-of-stuff'>
-                    <table>
+            <div >  
+                <div className='text-info mt-5 font-weight-bold mb-4 fs-3'>
+                    <FaTrophy className='me-3' /> Leaderboard
+                </div>      
+                <div className='table-of-stuff w-75 align-items-center justify-content-center mx-auto'>
+                    <table className='table table-light'>
                         <thead>
                             <tr>
-                                <th>Rank</th>
-                                <th>Name</th>
-                                <th>Points</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Points</th>
                             </tr>
                         </thead>
                         <tbody>
                             {sortedUsers.map((user, index) => (
                                 <tr key={user.id}>
-                                    <td>{index + 1}</td>
+                                    <th scope="row">{index + 1}</th>
                                     <td>{user.username}</td>
                                     <td>{user.points}</td>
                                 </tr>
