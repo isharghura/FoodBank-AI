@@ -104,7 +104,7 @@ const WebCam = () => {
   return (
     // <div className="background">
     <div>
-      <h1 className= "skibidi fst-italic font-weight-bold"><a href="ranks">LeaderBoard 3</a></h1>  
+      <h1 className="skibidi fst-italic font-weight-bold text-primary"><a href="ranks">Leaderboard</a></h1>  
       <div className="top-right-button">
         <button className="btn"  onClick={() => window.location.href='profile'}><a href='profile'></a></button>
       </div>

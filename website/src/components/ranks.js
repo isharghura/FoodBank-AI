@@ -34,11 +34,11 @@ const Ranks = () => {
     return (
         <div className='bodytypeshit'>
             <div >        
-                <h1>Leaderboard</h1>
-                <div  style={{ position: 'relative', padding: '20px' }}>
+                <h1 className="text-warning">Leaderboard</h1>
+                <div className='top-5' style={{ position: 'relative', padding: '20px', left: "2vw" }}>
                     {/* Home Icon on the Left */}
                     <a href="/" style={{ textDecoration: 'none', color: 'black', position: 'absolute', top: '10px', left: '10px' }}>
-                        <FaHome size={40} /> {/* Adjust size if needed */}
+                        <FaHome size={40} className="fg-warning text-warning" /> {/* Adjust size if needed */}
                     </a>
                 </div>
                 <br>

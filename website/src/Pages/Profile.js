@@ -8,7 +8,7 @@ import profile from '../assets/profile.png';
 
 function UserProfile() {
   const [submittedItems, setSubmittedItems] = useState([]);
-  const userId = 2
+  const userId = 1
   const [username, setUsername] = useState(''); // State for username
 
   useEffect(() => {
