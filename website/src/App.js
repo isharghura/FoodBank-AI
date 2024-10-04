@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import WebCam from './components/camera';
-import Ranks from './components/ranks';
+import Home from './Pages/Home';
+import Leaderboard from './Pages/Leaderboard';
 import UserProfile from './Pages/Profile';
 import Navbar from './components/navbar';
 
@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path='/' element={<WebCam />}/>
-        <Route path='/ranks' element={<Ranks />} />
+        <Route path='/' element={<Home />}/>
+        <Route path='/ranks' element={<Leaderboard />} />
         <Route path='/profile' element={<UserProfile />} />      
       </Routes>
     </div>
