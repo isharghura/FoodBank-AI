@@ -36,7 +36,12 @@ const Leaderboard = () => {
             <div >  
                 <div className='text-info mt-5 font-weight-bold mb-4 fs-3'>
                     <FaTrophy className='me-3' /> Leaderboard
+                </div>
+                {/* animations */}
+                <div className="effect-wrap">
+                    <div class="effect effect-1"></div>
                 </div>      
+                <div class="bubble bubble1"></div>
                 <div className='table-of-stuff w-75 align-items-center justify-content-center mx-auto'>
                     <table className='table table-stripped'>
                         <thead className='table-light'>

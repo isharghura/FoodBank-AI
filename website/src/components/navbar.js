@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import "./navbar.css";
 import { FaHome, FaTrophy} from 'react-icons/fa';
 
 function Navbar() {
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState(location.pathname);
+
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+  };
   return (
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-1 w-75 mx-auto mt-2 rounded ">
         <div class="container-fluid w-50">
@@ -13,14 +20,23 @@ function Navbar() {
 
             <ul class="navbar-nav mb-2 mb-lg-0 mx-auto fs-6">
               <li class="nav-item  me-3">
-                <a className="nav-link active" aria-current="page" href="/">
+                <Link 
+                    className={`nav-link ${activeTab == '/' ? 'active text-primary' : ''}`}
+                    aria-current="page" 
+                    to="/"
+                    onClick={() => handleTabClick('/')}
+                >
                   <FaHome className="me-1 mt-n5" /> Home
-                </a>
+                </Link>
               </li>
               <li class="nav-item ms-3">
-                <a className="nav-link" href="/ranks">
+                <Link 
+                    className={`nav-link ${activeTab == '/ranks' ? 'active text-primary' : ''}`}
+                    to="/ranks"
+                    onClick={() => handleTabClick('/ranks')}
+                >
                   <FaTrophy className="me-1 mt-n2" /> Leaderboard
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="profile-button-wrapper">
