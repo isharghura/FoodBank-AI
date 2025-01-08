@@ -13,7 +13,7 @@ CORS(app)  # This will enable CORS for all routes
 load_dotenv()
 databaseName = os.getenv("DATABASE_NAME")
 databasePass = os.getenv("PASSWORD")
-db = FoodQuestDB(databaseName, "postgres", "localhost", 5432, databasePass)
+db = FoodQuestDB("hackthehilldb", "postgres", "localhost", 5432, "postgres")
 
 def predict_image(base64):
     model_output = run_prediction(base64)

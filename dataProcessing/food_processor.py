@@ -13,7 +13,7 @@ def return_random_date(start_date, end_date):
     delta = end_date - start_date
 
     # Generate a random number of days within the range
-    random_days = random.randint(0, delta.days)
+    random_days = random.randint(0, 10)
 
     # Get the random date
     return start_date + timedelta(days=random_days)
@@ -22,7 +22,7 @@ def get_food_data(input_data):
     """
     Fetches food data from the USDA Food Data Central API based on the input query.
     """
-    api_key = os.getenv("API_KEY")
+    api_key = "BQQzfxOlUQgw7EzrtxmFeBmDUdciD44bO1buhYiG"
     if api_key is None:
         return {"error": "API Key is missing"}
 
