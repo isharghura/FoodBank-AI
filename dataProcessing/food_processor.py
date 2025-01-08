@@ -22,7 +22,7 @@ def get_food_data(input_data):
     """
     Fetches food data from the USDA Food Data Central API based on the input query.
     """
-    api_key = "BQQzfxOlUQgw7EzrtxmFeBmDUdciD44bO1buhYiG"
+    api_key = os.getenv("API_KEY")
     if api_key is None:
         return {"error": "API Key is missing"}
 

@@ -1,9 +1,10 @@
 import psycopg
 
 POSTGRES_PASS = "postgres"
+db_name = os.getenv("DATABASE_NAME")
 
 connection = psycopg.connect(
-    "dbname=FoodQuest user=postgres host=localhost port=5432 password=" + POSTGRES_PASS
+    "dbname="+db_name+"user=postgres host=localhost port=5432 password=" + POSTGRES_PASS
 )
 cur = connection.cursor()
 
