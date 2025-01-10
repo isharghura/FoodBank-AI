@@ -105,7 +105,7 @@ class FoodQuestDB:
 # Usage example:
 if __name__ == "__main__":
     POSTGRES_PASS = "postgres"
-    db = FoodQuestDB("FoodQuest", "postgres", "localhost", 5432, POSTGRES_PASS)
+    db = FoodQuestDB("hackthehilldb", "postgres", "localhost", 5432, POSTGRES_PASS)
 
     # Example usage of methods
     user_id = 1
